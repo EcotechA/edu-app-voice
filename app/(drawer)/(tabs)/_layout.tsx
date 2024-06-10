@@ -3,12 +3,14 @@ import { Tabs } from 'expo-router';
 
 import PlusRecordMid from '~/components/Icons/PlusRecordMid';
 import TranscriptionSheet from '~/components/Icons/TranscriptionSheet';
+import TabIcon from '~/components/TabIcon';
 import { theme } from '~/theme';
 
 export default function TabLayout() {
   return (
     <>
       <Tabs
+        backBehavior="history"
         screenOptions={{
           headerShown: false,
           tabBarShowLabel: false,
@@ -22,8 +24,10 @@ export default function TabLayout() {
           name="index"
           options={{
             title: '',
-            tabBarIcon: ({ color }) => (
-              <TranscriptionSheet width={30} height={30} fillColor={color} />
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused}>
+                <TranscriptionSheet width={30} height={30} />
+              </TabIcon>
             ),
           }}
         />
@@ -37,14 +41,22 @@ export default function TabLayout() {
           })}
           options={{
             title: '',
-            tabBarIcon: ({ size, color }) => <PlusRecordMid size={size} color={color} />,
+            tabBarIcon: ({ size, focused }) => (
+              <TabIcon focused={focused}>
+                <PlusRecordMid size={size} />
+              </TabIcon>
+            ),
           }}
         />
         <Tabs.Screen
           name="profile"
           options={{
             title: 'Profile',
-            tabBarIcon: ({ color, size }) => <Feather name="user" color={color} size={30} />,
+            tabBarIcon: ({ focused }) => (
+              <TabIcon focused={focused}>
+                <Feather name="user" size={30} />
+              </TabIcon>
+            ),
           }}
         />
       </Tabs>
