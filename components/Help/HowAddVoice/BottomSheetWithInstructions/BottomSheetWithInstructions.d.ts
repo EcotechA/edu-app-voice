@@ -1,0 +1,3 @@
+interface BottomSheetWithInstructions {
+  onClose: () => void;
+}

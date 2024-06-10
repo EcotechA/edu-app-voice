@@ -5,9 +5,13 @@ import { styles } from './style';
 import AddVoice from '~/components/Icons/AddVoice';
 import StreamVoiceProgress from '~/components/Icons/StreamVoiceProgress';
 
-export default function HowAddVoice() {
+interface HowAddVoiceProps {
+  handleBottomSheetOpen: () => void;
+}
+
+export default function HowAddVoice({ handleBottomSheetOpen }: HowAddVoiceProps) {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.90}>
+    <TouchableOpacity style={styles.container} activeOpacity={0.9} onPress={handleBottomSheetOpen}>
       <AddVoice
         style={{
           width: 25,
@@ -16,7 +20,13 @@ export default function HowAddVoice() {
         }}
       />
       <Text style={styles.text}>How to add voice memos to Transcribe</Text>
-      <StreamVoiceProgress />
+      <StreamVoiceProgress
+        style={{
+          width: 50,
+          height: 50,
+          marginLeft: 1,
+        }}
+      />
     </TouchableOpacity>
   );
 }
