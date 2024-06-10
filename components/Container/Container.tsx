@@ -9,7 +9,7 @@ interface ContainerProps extends ViewProps {
 
 export function Container({ children, ...props }: ContainerProps) {
   return (
-    <SafeAreaView style={[styles.container]} {...props}>
+    <SafeAreaView {...props} style={[styles.container, props.style]}>
       {children}
     </SafeAreaView>
   );

@@ -1,11 +1,7 @@
 import { useFonts } from 'expo-font';
-import { Stack, SplashScreen } from 'expo-router';
+import { SplashScreen, Slot } from 'expo-router';
 import { useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
-import WelcomeScreen from './welcome/welcome';
-
-import Onboarding from '~/components/Onboarding';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -35,12 +31,11 @@ export default function RootLayout() {
   }
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }} onLayout={onLayoutRootView}>
-      {/* <Stack>
-        <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
-        <Stack.Screen name="modal" options={{ title: 'Modal', presentation: 'modal' }} />
-      </Stack> */}
-      <WelcomeScreen />
+    <GestureHandlerRootView
+      style={{ flex: 1, backgroundColor: '#ffffff' }}
+      onLayout={onLayoutRootView}>
+      <Slot />
+      {/* <WelcomeScreen /> */}
     </GestureHandlerRootView>
   );
 }

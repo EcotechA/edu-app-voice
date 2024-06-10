@@ -1,15 +1,33 @@
-import { Stack } from 'expo-router';
+import React, { useState } from 'react';
+import { Text, StyleSheet, View } from 'react-native';
 
 import { Container } from '~/components/Container/Container';
-import { ScreenContent } from '~/components/ScreenContent';
+import SearchBar from '~/components/SearchBar';
 
-export default function Home() {
+export default function Transcriptions() {
+  const [searchPhrase, setSearchPhrase] = useState<string>('');
+  const [clicked, setClicked] = useState<boolean>(false);
+
   return (
-    <>
-      <Stack.Screen options={{ title: 'Tab One' }} />
-      <Container>
-        <ScreenContent path="app/(drawer)/(tabs)/index.tsx" title="Tab One" />
-      </Container>
-    </>
+    <Container>
+      <SearchBar
+        clicked={clicked}
+        searchPhrase={searchPhrase}
+        setSearchPhrase={setSearchPhrase}
+        setClicked={setClicked}
+      />
+      {/* Here you can add the content that will be filtered by the searchPhrase */}
+      <View style={styles.content}>
+        <Text>Search Phrase: {searchPhrase}</Text>
+        {/* Add other content or components here */}
+      </View>
+    </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  content: {
+    marginTop: 20,
+    alignItems: 'center',
+  },
+});
