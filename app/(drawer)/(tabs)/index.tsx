@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Text, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 
 import { Container } from '~/components/Container/Container';
+import ListRecords from '~/components/ListRecord';
 import SearchBar from '~/components/SearchBar';
 
 export default function Transcriptions() {
@@ -18,8 +19,7 @@ export default function Transcriptions() {
       />
       {/* Here you can add the content that will be filtered by the searchPhrase */}
       <View style={styles.content}>
-        <Text>Search Phrase: {searchPhrase}</Text>
-        {/* Add other content or components here */}
+        <ListRecords />
       </View>
     </Container>
   );
