@@ -1,8 +1,6 @@
-import { Feather, Entypo } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 import React from 'react';
-import { StyleSheet, TextInput, View, Keyboard, Button } from 'react-native';
-
-import { theme } from '~/theme';
+import { View, TextInput, Keyboard, Button } from 'react-native';
 
 type SearchBarProps = {
   clicked: boolean;
@@ -18,16 +16,12 @@ const SearchBar: React.FC<SearchBarProps> = ({
   setClicked,
 }) => {
   return (
-    <View style={styles.container}>
-      <View style={clicked ? styles.searchBar__clicked : styles.searchBar__unclicked}>
-        <Feather
-          name="search"
-          size={20}
-          color={theme.colors.TextGray999Light}
-          style={{ marginLeft: 8 }}
-        />
+    <View className="m-4 mt-4 justify-start items-center flex-row w-[85%]">
+      <View
+        className={`${clicked ? 'p-2 flex-row w-[80%] bg-backgroundLight rounded-full items-center justify-evenly border border-TextGray999Light' : 'p-2 flex-row w-[95%] bg-backgroundLight rounded-full items-center border border-TextGray999Light'}`}>
+        <Feather name="search" size={20} color="text-gray-999" className="ml-2" />
         <TextInput
-          style={styles.input}
+          className="text-lg ml-2 pr-2 w-[90%] text-gray-999"
           placeholder="Search"
           value={searchPhrase}
           onChangeText={setSearchPhrase}
@@ -42,8 +36,8 @@ const SearchBar: React.FC<SearchBarProps> = ({
           <Feather
             name="x"
             size={20}
-            color={theme.colors.TextGray666Light}
-            style={{ padding: 1, marginRight: 4, backfaceVisibility: 'hidden' }}
+            color="text-gray-666"
+            className="p-1 mr-1"
             onPress={() => setSearchPhrase('')}
           />
         )}
@@ -65,42 +59,3 @@ const SearchBar: React.FC<SearchBarProps> = ({
 };
 
 export default SearchBar;
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 15,
-    marginTop: 16,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    flexDirection: 'row',
-    width: '85%',
-  },
-  searchBar__unclicked: {
-    padding: 10,
-    flexDirection: 'row',
-    width: '95%',
-    backgroundColor: theme.colors.backgroundLight,
-    borderRadius: 100,
-    alignItems: 'center',
-    borderColor: theme.colors.TextGray999Light,
-    borderWidth: 1,
-  },
-  searchBar__clicked: {
-    padding: 10,
-    flexDirection: 'row',
-    width: '80%',
-    backgroundColor: theme.colors.backgroundLight,
-    borderRadius: 100,
-    alignItems: 'center',
-    justifyContent: 'space-evenly',
-    borderColor: theme.colors.TextGray999Light,
-    borderWidth: 1,
-  },
-  input: {
-    fontSize: 20,
-    marginLeft: 10,
-    paddingRight: 10,
-    width: '90%',
-    color: theme.colors.TextGray999Light,
-  },
-});

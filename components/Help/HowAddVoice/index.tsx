@@ -1,6 +1,6 @@
+import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-
-import { styles } from './style';
+import 'nativewind';
 
 import AddVoice from '~/components/Icons/AddVoice';
 import StreamVoiceProgress from '~/components/Icons/StreamVoiceProgress';
@@ -11,22 +11,15 @@ interface HowAddVoiceProps {
 
 export default function HowAddVoice({ handleBottomSheetOpen }: HowAddVoiceProps) {
   return (
-    <TouchableOpacity style={styles.container} activeOpacity={0.9} onPress={handleBottomSheetOpen}>
-      <AddVoice
-        style={{
-          width: 25,
-          height: 25,
-          marginLeft: 1,
-        }}
-      />
-      <Text style={styles.text}>How to add voice memos to Transcribe</Text>
-      <StreamVoiceProgress
-        style={{
-          width: 50,
-          height: 50,
-          marginLeft: 1,
-        }}
-      />
+    <TouchableOpacity
+      className="justify-between items-center flex-row h-20 rounded-lg px-4  bg-TextGray333Light"
+      activeOpacity={0.8}
+      onPress={handleBottomSheetOpen}>
+      <AddVoice className="w-6 h-6" />
+      <Text className="text-base text-backgroundLight w-[60%]">
+        How to add voice memos to Transcribe
+      </Text>
+      <StreamVoiceProgress className="w-10 h-10 mx-4" />
     </TouchableOpacity>
   );
 }

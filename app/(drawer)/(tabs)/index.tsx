@@ -2,7 +2,6 @@ import BottomSheet from '@gorhom/bottom-sheet';
 import React, { useRef, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import { Container } from '~/components/Container/Container';
 import HowAddVoice from '~/components/Help/HowAddVoice';
 import { BottomSheetWithInstructions } from '~/components/Help/HowAddVoice/BottomSheetWithInstructions';
 import ListRecords from '~/components/ListRecord';
@@ -17,7 +16,7 @@ export default function Transcriptions() {
   const handleBottomSheetClose = () => refBottomSheetHelpInstruction.current?.close();
 
   return (
-    <Container>
+    <View className="w-full h-full bg-backgroundLight">
       <SearchBar
         clicked={clicked}
         searchPhrase={searchPhrase}
@@ -25,7 +24,7 @@ export default function Transcriptions() {
         setClicked={setClicked}
       />
       {/* Here you can add the content that will be filtered by the searchPhrase */}
-      <View style={styles.content}>
+      <View className="w-full py-2 px-2 bg-backgroundLight">
         <HowAddVoice handleBottomSheetOpen={handleBottomSheetOpen} />
         <ListRecords />
       </View>
@@ -33,13 +32,6 @@ export default function Transcriptions() {
         ref={refBottomSheetHelpInstruction}
         onClose={handleBottomSheetClose}
       />
-    </Container>
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  content: {
-    marginTop: 20,
-    alignItems: 'center',
-  },
-});

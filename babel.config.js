@@ -3,10 +3,10 @@ module.exports = function (api) {
   const plugins = [];
 
   plugins.push('react-native-reanimated/plugin');
+  plugins.push('nativewind/babel');
 
   return {
     presets: ['babel-preset-expo'],
-
     plugins,
   };
 };

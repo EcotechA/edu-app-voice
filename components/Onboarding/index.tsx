@@ -1,10 +1,9 @@
 import { useRef, useState } from 'react';
-import { Animated } from 'react-native';
+import { Animated, View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 
 import OnboardingItem from './OnBoardingItem';
 import Paginator from './Paginator';
-import { Container } from '../Container/Container';
 
 import { SLIDES_WELCOME } from '~/utils/slides-welcome';
 
@@ -26,7 +25,7 @@ export default function Onboarding() {
     }
   }
   return (
-    <Container style={{ flex: 3 }}>
+    <View style={{ flex: 3 }}>
       <FlatList
         data={SLIDES_WELCOME} // Provisoriamente brutado no codigo
         renderItem={({ item }) => <OnboardingItem item={item} next={nextStep} />}
@@ -44,6 +43,6 @@ export default function Onboarding() {
         ref={slideRef}
       />
       <Paginator data={SLIDES_WELCOME} currentSlide={currentSlide} />
-    </Container>
+    </View>
   );
 }

@@ -1,8 +1,7 @@
 import React from 'react';
-import { View, FlatList, Text } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 import RecordItem from './RecordItem';
-import { styles } from './style';
 
 import { Recording } from '~/interfaces/Recording';
 const recordings: Recording[] = [
@@ -52,12 +51,12 @@ const recordings: Recording[] = [
 
 function ListRecords() {
   return (
-    <View style={styles.container}>
+    <View className="w-full py-2 px-2 bg-backgroundLight">
       <FlatList
         data={recordings}
         renderItem={({ item }) => <RecordItem recording={item} />}
         keyExtractor={(item) => item.id}
-        contentContainerStyle={styles.list}
+        className="w-full h-full"
       />
     </View>
   );

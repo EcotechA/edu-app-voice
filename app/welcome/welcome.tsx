@@ -1,14 +1,13 @@
-import { styles } from './style';
+import { View } from 'react-native';
 
-import { Container } from '~/components/Container/Container';
 import Onboarding from '~/components/Onboarding';
 
 export default function WelcomeScreen() {
   return (
     <>
-      <Container style={styles.background}>
+      <View className="w-full h-full bg-backgroundLight">
         <Onboarding />
-      </Container>
+      </View>
     </>
   );
 }
