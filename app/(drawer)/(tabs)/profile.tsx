@@ -1,5 +1,11 @@
-import { Redirect } from 'expo-router';
+import { router } from 'expo-router';
+
+import { Button } from '~/components/Button/Button';
 
 export default function Profile() {
-  return <Redirect href="/(stack)/profile" />;
+  return (
+    <>
+      <Button title="back" onPress={() => router.back()} />
+    </>
+  );
 }

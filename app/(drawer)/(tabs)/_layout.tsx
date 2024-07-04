@@ -1,5 +1,5 @@
 import { Feather } from '@expo/vector-icons';
-import { Tabs } from 'expo-router';
+import { Tabs, router } from 'expo-router';
 
 import PlusRecordMid from '~/components/Icons/PlusRecordMid';
 import TranscriptionSheet from '~/components/Icons/TranscriptionSheet';
@@ -50,8 +50,15 @@ export default function TabLayout() {
         />
         <Tabs.Screen
           name="profile"
+          listeners={{
+            tabPress: (event) => {
+              event.preventDefault();
+              router.navigate('profile');
+            },
+          }}
           options={{
             title: 'Profile',
+
             tabBarIcon: ({ focused }) => (
               <TabIcon focused={focused}>
                 <Feather name="user" size={30} />

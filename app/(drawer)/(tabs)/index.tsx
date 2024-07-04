@@ -1,6 +1,6 @@
 import BottomSheet from '@gorhom/bottom-sheet';
 import React, { useRef, useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 
 import HowAddVoice from '~/components/Help/HowAddVoice';
 import { BottomSheetWithInstructions } from '~/components/Help/HowAddVoice/BottomSheetWithInstructions';
