@@ -1,19 +1,26 @@
+import { ClerkLoaded, ClerkProvider } from '@clerk/clerk-expo';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Slot } from 'expo-router';
+import { SplashScreen } from 'expo-router';
 import { useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+
+import InitialLayoout from './initialLayout';
+import { useLogin } from '../hooks/useLogin';
 
 import { queryClient } from '~/api/queryClient';
 
 SplashScreen.preventAutoHideAsync();
-
-export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(drawer)',
-};
+const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
 export default function RootLayout() {
+  const login = useLogin();
+
+  if (!publishableKey) {
+    throw new Error(
+      'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
+    );
+  }
   const [fonssLoaded, fontsError] = useFonts({
     'Poppins-SemiBold': require('../../theme/fonts/Poppins/Poppins-SemiBold.ttf'),
     'Poppins-Regular': require('../../theme/fonts/Poppins/Poppins-Regular.ttf'),
@@ -35,12 +42,15 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <GestureHandlerRootView
-        style={{ flex: 1, backgroundColor: '#ffffff' }}
-        onLayout={onLayoutRootView}>
-        <Slot />
-        {/* <WelcomeScreen /> */}
-      </GestureHandlerRootView>
+      <ClerkProvider publishableKey={publishableKey} >
+        <GestureHandlerRootView
+          style={{ flex: 1, backgroundColor: '#ffffff' }}
+          onLayout={onLayoutRootView}>
+          <ClerkLoaded>
+            <InitialLayoout />
+          </ClerkLoaded>
+        </GestureHandlerRootView>
+      </ClerkProvider>
     </QueryClientProvider>
   );
 }
