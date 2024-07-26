@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiTranscribeMain = axios.create({
-  baseURL: 'https://api.example.com',
+  baseURL: 'http://localhost:3007/',
   timeout: 5000,
 });
 

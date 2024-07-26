@@ -26,6 +26,7 @@ export default function Login() {
           await oAuthFlow.setActive({
             session: oAuthFlow.createdSessionId,
           });
+
         } else {
           setIsLoading(false);
         }
