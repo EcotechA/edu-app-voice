@@ -1,4 +1,4 @@
-import { useOAuth, useUser } from '@clerk/clerk-expo';
+import { useOAuth } from '@clerk/clerk-expo';
 import { Ionicons } from '@expo/vector-icons';
 import * as Linking from 'expo-linking';
 import * as WebBrowser from 'expo-web-browser';

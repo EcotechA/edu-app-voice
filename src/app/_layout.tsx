@@ -6,7 +6,6 @@ import { useCallback } from 'react';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import InitialLayoout from './initialLayout';
-import { useLogin } from '../hooks/useLogin';
 
 import { queryClient } from '~/api/queryClient';
 
@@ -14,8 +13,6 @@ SplashScreen.preventAutoHideAsync();
 const publishableKey = process.env.EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY!;
 
 export default function RootLayout() {
-  const login = useLogin();
-
   if (!publishableKey) {
     throw new Error(
       'Missing Publishable Key. Please set EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY in your .env'
@@ -42,7 +39,7 @@ export default function RootLayout() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <ClerkProvider publishableKey={publishableKey} >
+      <ClerkProvider publishableKey={publishableKey}>
         <GestureHandlerRootView
           style={{ flex: 1, backgroundColor: '#ffffff' }}
           onLayout={onLayoutRootView}>
